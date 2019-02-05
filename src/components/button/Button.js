@@ -1,15 +1,20 @@
+// @flow
 class button {
-  constructor() {
-    this.el = document.querySelector("#button4");
+  el: HTMLElement | null
 
-    if (this.el) {
-      this.init();
+  constructor() {
+    this.el = document.querySelector('#button4')
+
+    if (this.el instanceof HTMLElement) {
+      // TODO Example, remove in production
+      console.log(this.el.textContent.trim())
     }
   }
 
-  init() {
-    console.log(this.el.innerText);
+  doSomething() {
+    // TODO Example, remove in production
+    console.log('Something!')
   }
 }
 
-export default button;
+export default button

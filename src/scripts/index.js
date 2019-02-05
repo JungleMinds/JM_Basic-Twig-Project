@@ -1,23 +1,36 @@
-import Button from "../components/button/Button";
+import Button from '../components/button/Button'
 
-const DEV = process.env.NODE_ENV === "development";
+const DEV = process.env.NODE_ENV === 'development'
+const COMMIT = process.env.COMMIT || 'N.A.'
+const VERSION = process.env.VERSION || 'N.A.'
 
-function ready(fn) {
+function ready(init) {
+  const motd = () => {
+    console.info(`
+    __            __        _                __   __
+     | |  | |\\ | / _\` |    |__  |\\/| | |\\ | |  \\ /__\`
+  \\__/ \\__/ | \\| \\__> |___ |___ |  | | | \\| |__/ .__/
+  by: Jungle Minds
+  Version: ${VERSION}
+  Commit: ${COMMIT}
+  `)
+    init()
+  }
   if (
     document.attachEvent
-      ? document.readyState === "complete"
-      : document.readyState !== "loading"
+      ? document.readyState === 'complete'
+      : document.readyState !== 'loading'
   ) {
-    fn();
+    motd()
   } else {
-    document.addEventListener("DOMContentLoaded", fn);
+    document.addEventListener('DOMContentLoaded', motd)
   }
   if (DEV) {
-    window.addEventListener("reload", fn);
+    window.addEventListener('reload', init)
   }
 }
 
 ready(function() {
-  console.log("build js");
-  new Button();
-});
+  console.info('New version loaded.')
+  new Button()
+})

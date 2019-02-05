@@ -1,20 +1,36 @@
-const path = require("path");
+const path = require('path')
+const webpack = require('webpack')
+const env = require('../config/env')
 
-module.exports = {
+const defaultConfig = {
   module: {
-    rules: [
-      {
-        test: /\.twig$/,
-        loader: "twig-loader"
-      },
-      {
-        test: /\.scss$/,
-        loaders: ["style-loader", "css-loader", "sass-loader"],
-        include: path.resolve(__dirname, "../")
-      }
-    ]
+    rules: []
   },
-  node: {
-    fs: "empty" // avoids error messages
+  plugins: []
+}
+
+module.exports = (baseConfig, mode) => {
+  baseConfig = Object.assign(defaultConfig, baseConfig || {})
+
+  baseConfig.module.rules.push({
+    test: /\.twig$/,
+    loader: 'twig-loader'
+  })
+
+  baseConfig.module.rules.push({
+    test: /\.scss$/,
+    loaders: ['style-loader', 'css-loader', 'sass-loader'],
+    include: path.resolve(__dirname, '../')
+  })
+
+  baseConfig.node = {
+    fs: 'empty' // avoids error messages
   }
-};
+
+  baseConfig.plugins = baseConfig.plugins.filter(
+    plugin => !(plugin instanceof webpack.DefinePlugin)
+  )
+  baseConfig.plugins.push(new webpack.DefinePlugin(env.stringified))
+
+  return baseConfig
+}
