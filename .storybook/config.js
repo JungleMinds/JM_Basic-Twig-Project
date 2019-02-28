@@ -7,7 +7,16 @@ addDecorator(withHTML())
 addDecorator(withKnobs())
 
 addDecorator((story, config) => {
-  window.dispatchEvent(new Event('reload'))
+  let event
+  if (typeof Event === 'function') {
+    event = new Event('reload')
+  } else {
+    event = document.createEvent('Event')
+    event.initEvent('reload', true, true)
+  }
+
+  window.dispatchEvent(event)
+
   return story()
 })
 
