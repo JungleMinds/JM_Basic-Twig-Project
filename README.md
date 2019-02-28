@@ -3,6 +3,15 @@
 This is a starter project for building a HTML site using twig, ES6 and scss. It uses Storybook as a preview/development environment.
 The output is a set of twig files per component and separate JS and CSS file.
 
+## Demo
+
+You can see a live demo here: https://twig-storybook.jungleminds.com
+
+example distribution: https://twig-storybook.jungleminds.com/distribution
+example feed: https://twig-storybook.jungleminds.com/distribution/feed.json
+
+It was set up with [Netlify](https://netlify.com) using nothing more than this repo and the `build` script.
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
