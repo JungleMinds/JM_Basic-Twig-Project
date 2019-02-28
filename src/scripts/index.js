@@ -1,6 +1,5 @@
 import Button from '../components/button/Button'
 
-const DEV = process.env.NODE_ENV === 'development'
 const COMMIT = process.env.COMMIT || 'N.A.'
 const VERSION = process.env.VERSION || 'N.A.'
 
@@ -25,9 +24,7 @@ function ready(init) {
   } else {
     document.addEventListener('DOMContentLoaded', motd)
   }
-  if (DEV) {
-    window.addEventListener('reload', init)
-  }
+  window.addEventListener('reload', init)
 }
 
 ready(function() {
