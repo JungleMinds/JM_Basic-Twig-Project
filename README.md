@@ -2,6 +2,11 @@
 
 This is a starter project for building a HTML site using twig, ES6 and scss. It uses Storybook as a preview/development environment.
 The output is a set of twig files per component and separate JS and CSS file.
+<aside class="notice">
+
+**Warning**
+
+The current setup relies on twigjs (via the webpack twig-loader). This brings multiple restrictions like `dynamic includes` not working. Please check out our [issues](https://github.com/JungleMinds/JM_Basic-Twig-Project/issues), [twig-loader issues](https://github.com/zimmo-be/twig-loader/issues) and [twigjs issues](https://github.com/twigjs/twig.js/issues) before diving in.
 
 ## Demo
 
